@@ -16,3 +16,9 @@ build
 # Logs
 logs
 *.log
+
+# macOS
+.DS_Store
+
+# Generated design files
+uploads
