@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phone Skin Designer - Admin Panel</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: #f9fafb;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      padding: 2rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
+
+    .section {
+      padding: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .model-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .model-card {
+      padding: 1rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .model-info h3 {
+      font-size: 1rem;
+      color: #1f2937;
+      margin-bottom: 0.25rem;
+    }
+
+    .model-info p {
+      font-size: 0.85rem;
+      color: #6b7280;
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+
+    .btn-secondary {
+      background: #f3f4f6;
+      color: #1f2937;
+      border: 1px solid #d1d5db;
+    }
+
+    .btn-danger {
+      background: #ef4444;
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background: #dc2626;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #1f2937;
+      margin-bottom: 0.5rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      font-size: 0.95rem;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      padding: 2rem;
+    }
+
+    .modal.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #6b7280;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .log-entry {
+      padding: 0.75rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.375rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .log-entry strong {
+      color: #1f2937;
+    }
+
+    .log-entry span {
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Phone Skin Designer - Admin Panel</h1>
+      <p class="subtitle">Manage phone models, view design logs, and configure settings</p>
+    </div>
+
+    <div class="section">
+      <h2>Phone Models</h2>
+      <div id="modelList" class="model-list"></div>
+      <button class="btn btn-primary" onclick="openAddModelModal()" style="margin-top: 1rem;">
+        Add New Phone Model
+      </button>
+    </div>
+
+    <div class="section">
+      <h2>Recent Design Logs</h2>
+      <div id="logList"></div>
+      <button class="btn btn-secondary" onclick="loadLogs()" style="margin-top: 1rem;">
+        Refresh Logs
+      </button>
+    </div>
+  </div>
+
+  <div id="modelModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Add Phone Model</h2>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <form id="modelForm" onsubmit="saveModel(event)">
+        <div class="form-group">
+          <label for="modelId">Model ID (e.g., iphone-16-pro-max)</label>
+          <input type="text" id="modelId" required>
+        </div>
+        <div class="form-group">
+          <label for="modelLabel">Display Label</label>
+          <input type="text" id="modelLabel" required>
+        </div>
+        <div class="form-group">
+          <label for="svgTemplateUrl">SVG Template URL</label>
+          <input type="text" id="svgTemplateUrl" required>
+        </div>
+        <div class="form-group">
+          <label for="outputWidth">Output Width (px)</label>
+          <input type="number" id="outputWidth" required>
+        </div>
+        <div class="form-group">
+          <label for="outputHeight">Output Height (px)</label>
+          <input type="number" id="outputHeight" required>
+        </div>
+        <div class="form-group">
+          <label for="printDpi">Print DPI</label>
+          <input type="number" id="printDpi" value="300" required>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Save Model</button>
+          <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let phoneModels = [];
+
+    async function loadModels() {
+      try {
+        const response = await fetch('../src/data/phoneModels.json');
+        phoneModels = await response.json();
+        renderModels();
+      } catch (error) {
+        console.error('Error loading models:', error);
+      }
+    }
+
+    function renderModels() {
+      const container = document.getElementById('modelList');
+      container.innerHTML = phoneModels.map(model => `
+        <div class="model-card">
+          <div class="model-info">
+            <h3>${model.label}</h3>
+            <p>ID: ${model.id} | ${model.outputWidthPx}×${model.outputHeightPx}px @ ${model.printDpi} DPI</p>
+          </div>
+          <div>
+            <button class="btn btn-secondary" onclick="editModel('${model.id}')">Edit</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openAddModelModal() {
+      document.getElementById('modalTitle').textContent = 'Add Phone Model';
+      document.getElementById('modelForm').reset();
+      document.getElementById('modelModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('modelModal').classList.remove('active');
+    }
+
+    function saveModel(event) {
+      event.preventDefault();
+      alert('Note: This is a demo admin panel. To actually save models, you need to implement a backend endpoint to update the phoneModels.json file.');
+      closeModal();
+    }
+
+    async function loadLogs() {
+      const container = document.getElementById('logList');
+      container.innerHTML = '<p>Loading logs...</p>';
+
+      container.innerHTML = `
+        <div class="log-entry">
+          <strong>Design ID:</strong> <span>abc-123-def</span><br>
+          <strong>Phone Model:</strong> <span>iPhone 16 Pro Max</span><br>
+          <strong>Timestamp:</strong> <span>2025-12-04 10:30:45</span><br>
+          <strong>File URL:</strong> <a href="#">View Design</a>
+        </div>
+        <p style="color: #6b7280; font-size: 0.9rem; margin-top: 1rem;">
+          Note: Connect this to your backend API to load real design logs from the server.
+        </p>
+      `;
+    }
+
+    loadModels();
+    loadLogs();
+  </script>
+</body>
+</html>

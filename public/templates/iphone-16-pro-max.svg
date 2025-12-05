@@ -1,0 +1,40 @@
+<!-- Sample SVG Template for iPhone 16 Pro Max Phone Skin -->
+<svg width="1800" height="3600" viewBox="0 0 1800 3600" xmlns="http://www.w3.org/2000/svg">
+  <!-- CUT PATH - Outer boundary of the phone skin -->
+  <path id="CUT_PATH"
+    d="M 100 200 L 1700 200 Q 1750 200 1750 250 L 1750 3400 Q 1750 3450 1700 3450 L 100 3450 Q 50 3450 50 3400 L 50 250 Q 50 200 100 200 Z"
+    fill="none"
+    stroke="#000000"
+    stroke-width="2"
+    stroke-dasharray="5,5" />
+
+  <!-- SAFE AREA - Where user artwork should be placed -->
+  <rect id="SAFE_AREA"
+    x="150"
+    y="300"
+    width="1500"
+    height="3100"
+    fill="rgba(59, 130, 246, 0.1)"
+    stroke="#3b82f6"
+    stroke-width="2" />
+
+  <!-- CAMERA CUTOUT - Area to avoid for camera -->
+  <rect id="CAMERA_CUTOUT"
+    x="200"
+    y="250"
+    width="400"
+    height="150"
+    rx="30"
+    fill="none"
+    stroke="#ef4444"
+    stroke-width="2"
+    stroke-dasharray="3,3" />
+
+  <!-- LABELS (optional - remove in production) -->
+  <text x="900" y="100" font-family="Arial" font-size="40" fill="#666" text-anchor="middle">
+    iPhone 16 Pro Max Skin Template
+  </text>
+  <text x="900" y="3550" font-family="Arial" font-size="30" fill="#666" text-anchor="middle">
+    Cut along dashed line | Keep design within blue area
+  </text>
+</svg>

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "iphone-16-pro-max",
+    "label": "iPhone 16 Pro Max",
+    "svgTemplateUrl": "/templates/iphone-16-pro-max.svg",
+    "previewMaskPathId": "SAFE_AREA",
+    "safeAreaId": "SAFE_AREA",
+    "cutPathId": "CUT_PATH",
+    "cameraHoleIds": ["CAMERA_CUTOUT"],
+    "printDpi": 300,
+    "outputWidthPx": 1800,
+    "outputHeightPx": 3600
+  },
+  {
+    "id": "iphone-16-pro",
+    "label": "iPhone 16 Pro",
+    "svgTemplateUrl": "/templates/iphone-16-pro.svg",
+    "previewMaskPathId": "SAFE_AREA",
+    "safeAreaId": "SAFE_AREA",
+    "cutPathId": "CUT_PATH",
+    "cameraHoleIds": ["CAMERA_CUTOUT"],
+    "printDpi": 300,
+    "outputWidthPx": 1700,
+    "outputHeightPx": 3400
+  },
+  {
+    "id": "iphone-16",
+    "label": "iPhone 16",
+    "svgTemplateUrl": "/templates/iphone-16.svg",
+    "previewMaskPathId": "SAFE_AREA",
+    "safeAreaId": "SAFE_AREA",
+    "cutPathId": "CUT_PATH",
+    "cameraHoleIds": ["CAMERA_CUTOUT"],
+    "printDpi": 300,
+    "outputWidthPx": 1650,
+    "outputHeightPx": 3300
+  },
+  {
+    "id": "samsung-s24-ultra",
+    "label": "Samsung Galaxy S24 Ultra",
+    "svgTemplateUrl": "/templates/samsung-s24-ultra.svg",
+    "previewMaskPathId": "SAFE_AREA",
+    "safeAreaId": "SAFE_AREA",
+    "cutPathId": "CUT_PATH",
+    "cameraHoleIds": ["CAMERA_CUTOUT_1", "CAMERA_CUTOUT_2", "CAMERA_CUTOUT_3"],
+    "printDpi": 300,
+    "outputWidthPx": 1750,
+    "outputHeightPx": 3500
+  },
+  {
+    "id": "samsung-s24",
+    "label": "Samsung Galaxy S24",
+    "svgTemplateUrl": "/templates/samsung-s24.svg",
+    "previewMaskPathId": "SAFE_AREA",
+    "safeAreaId": "SAFE_AREA",
+    "cutPathId": "CUT_PATH",
+    "cameraHoleIds": ["CAMERA_CUTOUT"],
+    "printDpi": 300,
+    "outputWidthPx": 1650,
+    "outputHeightPx": 3300
+  },
+  {
+    "id": "pixel-9-pro",
+    "label": "Google Pixel 9 Pro",
+    "svgTemplateUrl": "/templates/pixel-9-pro.svg",
+    "previewMaskPathId": "SAFE_AREA",
+    "safeAreaId": "SAFE_AREA",
+    "cutPathId": "CUT_PATH",
+    "cameraHoleIds": ["CAMERA_BAR"],
+    "printDpi": 300,
+    "outputWidthPx": 1700,
+    "outputHeightPx": 3400
+  }
+]
